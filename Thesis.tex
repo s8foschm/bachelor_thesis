@@ -27,11 +27,12 @@
 \usepackage{hyperref}
 \usepackage{todonotes}
 \reversemarginpar
-\presetkeys{todonotes}{inline, size=\tiny, prepend, caption={TODO}}{}
+\presetkeys{todonotes}{noinline, line, size=\tiny, prepend}{}
 \usepackage{listings}
 \lstset{language=C,numbers=left}
 \usepackage{longtable}
 \usepackage{multicol}
+\usepackage{xifthen}
 
 
 %% Specify thesis parameters here
@@ -158,8 +159,10 @@ Thx Mom+Dad $<3$
 % Include the chapters of the thesis, as separate files (careful of case-sensitivity and spaces in filenames)
 % Capitalized chaptertitles generally look better
 
-\loadchapter{Introduction}{This is a Chapter title}
-\loadchapter{Motivation}{Motivation}
+\loadchapter{Introduction}{Introduction}
+\loadchapter{Methods}{Methods}
+\loadchapter{Results}{Results}
+\loadchapter{Discussion}{Discussion}
 
 
 \clearpage
@@ -200,5 +203,5 @@ Thx Mom+Dad $<3$
 \bibliography{Bibliography}  % The references (bibliography) information are stored in the file named "Bibliography.bib"
 
 \beginappendix %Begins the appendix
-\loadappendix{Appendix}{This is my appendix}
+\loadappendix{Appendix}{Appendix}
 \end{document}  % The End

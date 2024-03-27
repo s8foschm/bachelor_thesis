@@ -23,6 +23,13 @@
 \ProcessOptions\relax
 \LoadClass{\baseclass}
 
+\setlength{\marginparwidth}{3cm}
+
+\newcommand{\addref}[1][]{
+\ifthenelse{\isempty{#1}}{\todo[color=blue!40]{Add reference.}}{\todo[color=blue!40]{#1}}}
+\newcommand{\rewrite}[1][]{
+\ifthenelse{\isempty{#1}}{\todo[color=green!40]{Rewrite.}}{\todo[color=green!40]{#1}}}
+
 \newcommand{\setchapterpath}[1]{\def\chapterpath{#1}}
 \newcommand{\setappendixpath}[1]{\def\appendixpath{#1}}
 
@@ -99,7 +106,7 @@
 
 \renewcommand{\@makechapterhead}[1]{
   \vspace*{60\p@}
-  {\parindent \z@ \raggedright \normalfont
+  {\parindent \z@ \raggedleft \normalfont
     \hrule                                           % horizontal line
     \vspace{5pt}                                     % add some vertical space
     \ifnum \c@secnumdepth >\m@ne
@@ -108,7 +115,7 @@
     \fi
     \interlinepenalty\@M
     \Huge \scshape #1\par                            % chapter title
-    \vspace{5pt}                                     % add some vertical space
+    \vspace{10pt}                                     % add some vertical space
     \hrule                                           % horizontal rule
     \nobreak
     \vskip 40\p@
