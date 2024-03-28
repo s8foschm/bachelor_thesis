@@ -1,0 +1,41 @@
+\documentclass[a4paper, 11pt, twoside]{Thesis}  % Use the "Thesis" style defined in Thesis.cls
+\graphicspath{{./Figures/}}  % Location of the graphics files (set up for graphics to be in PDF format)
+\setchapterpath{./Chapters/}
+\setappendixpath{./Appendices/}
+
+% Include any extra LaTeX packages required
+\usepackage[square, numbers, comma, sort&compress]{natbib}  % Use the "Natbib" style for the references in the Bibliography
+\usepackage{verbatim}  % Needed for the "comment" environment to make LaTeX comments
+\usepackage{verbatimbox}
+\usepackage[usenames]{xcolor}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{framed}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{stmaryrd}
+\usepackage{framed}
+\usepackage{hyperref}
+\usepackage{todonotes}
+\reversemarginpar
+\presetkeys{todonotes}{noinline, line, size=\tiny, prepend}{}
+\usepackage{listings}
+\lstset{language=C,numbers=left}
+\usepackage{longtable}
+\usepackage{multicol}
+\usepackage{xifthen}
+
+
+\begin{document}
+
+\loadchapter{Introduction}{Introduction}
+
+\label{Bibliography}
+\addtotoc{Bibliography}
+\lhead{\emph{Bibliography}}  % Change the left side page header to "Bibliography"
+\bibliographystyle{unsrtnat}  % Use the "unsrtnat" BibTeX style for formatting the Bibliography
+\bibliography{Bibliography}  % The references (bibliography) information are stored in the file named "Bibliography.bib"
+
+\end{document}
