@@ -266,7 +266,7 @@
       \bigskip
       {\large \@date \\[0.8cm]}
 
-      {\includegraphics[height=2cm]{UniLogo.pdf} \qquad \includegraphics[height=2cm]{UniLogo.pdf}}
+      {\includegraphics[height=2cm]{UniLogo.pdf} \qquad \includegraphics[height=2cm]{CBILogo.jpg}}
       \bigskip
       {\tiny \revisionstring}
     \end{center}
