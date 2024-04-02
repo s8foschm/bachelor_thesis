@@ -25,10 +25,12 @@
 
 \setlength{\marginparwidth}{3cm}
 
-\newcommand{\addref}[1][]{
+\newcommand{\addref}[1]{
 \ifthenelse{\isempty{#1}}{\todo[color=blue!40]{Add reference.}}{\todo[color=blue!40]{#1}}}
-\newcommand{\rewrite}[1][]{
+\newcommand{\rewrite}[1]{
 \ifthenelse{\isempty{#1}}{\todo[color=green!40]{Rewrite.}}{\todo[color=green!40]{#1}}}
+\newcommand{\topic}[1]{
+\todo[color=red!40]{#1}}
 
 \newcommand{\setchapterpath}[1]{\def\chapterpath{#1}}
 \newcommand{\setappendixpath}[1]{\def\appendixpath{#1}}
@@ -101,6 +103,7 @@
 \usepackage{color}
 \usepackage[usenames,dvipsnames]{xcolor}
 \usepackage[subfigure]{tocloft}
+\usepackage{cite}
 
 %% ------- Define Chapter Heading Format ------- %%
 
