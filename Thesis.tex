@@ -27,7 +27,7 @@
 \usepackage{hyperref}
 \usepackage{todonotes}
 \reversemarginpar
-\presetkeys{todonotes}{noinline, line, size=\tiny, prepend}{}
+\presetkeys{todonotes}{noinline, line, tickmarkheight=0.1cm, color=orange!40, size=\tiny, prepend}{}
 \usepackage{listings}
 \lstset{language=C,numbers=left}
 \usepackage{longtable}
@@ -47,7 +47,7 @@
 \examiner    {Prof. Dr. Hans-Peter Lenhof}
 \secondexaminer {tbd}
 \degree      {Bachelor Of Science}
-\thesiskind  {Bachelor Thesis}
+\thesiskind  {Bachelor's Thesis}
 \authors     {Francesco Georg Schmitt}
 \thesistitle {Gene Set Enrichment Analysis on GDSC Datasets using GeneTrail}
 \date        {\today}
@@ -159,9 +159,11 @@
 % Include the chapters of the thesis, as separate files (careful of case-sensitivity and spaces in filenames)
 % Capitalized chaptertitles generally look better
 
-\loadchapter{Introduction}{Introduction}
-\loadchapter{Background}{Biological Background}
-\loadchapter{Methods}{Methods}
+\loadchapter{Intro}{Introduction}
+\loadchapter{Bio}{Biological Background}
+\loadchapter{Math}{Mathematical Methods}
+\loadchapter{Mats}{Materials}
+\loadchapter{Impl}{Implementation}
 \loadchapter{Results}{Results}
 \loadchapter{Discussion}{Discussion}
 

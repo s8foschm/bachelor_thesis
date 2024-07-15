@@ -1,0 +1,120 @@
+%!TEX root = ../Thesis.tex
+%\textsc{Basic structure:
+%\begin{itemize}
+%    \item Central Dogma Of Biology
+%    \item Mutations + Consequences (Gene Expression, ...)
+%    \item that facilitates formation of cancer (get into Hallmarks)
+%    \item similarities (Hallmarks), but still always very heterogeneous
+%\end{itemize}
+%}
+
+Cancer\topic{HOOK} is a family of diseases that has been at the forefront of biological and biomedical research for many years now.
+It is characterized by abnormal cell growth and multiplication, and when a tumor formed inside an organism grows and proliferates, it can spread and invade different parts of the body, damage organs, and often lead to death~\cite{who-cancer}.
+Indeed, it has been the second most common cause of death globally in 2023~\cite{owid-causes-of-death}.\\
+%, forming masses or groups of cells called \textit{tumors}, which can proliferate, spread and invade different parts of the body and damage organs, often leading to death~\cite{who-cancer}.
+%\color{gray}Still, scientists lack a profound understanding\rewrite{positiver gestalten: viele Durchbrüche, aber trotzdem viele unklar} of the causes, development and consequences of cancer, and comprehensive success in cancer therapy has not been achieved yet, as most current treatments remain highly dangerous, invasive, or their success rate very uncertain~\cite{side-effects-cancer-treatments, narrative-review-heterogeneity-challenges}.\color{black}\\
+In the last few decades, significant progress has been made in the research into cancer, including its origins, formation, biological processes and potential therapies against it.
+Despite that progress, a profound and extensive understanding of cancer as well as comprehensive success in cancer therapy have not been achieved.
+Currently, most cancer therapies remain highly dangerous, invasive, or their success very uncertain~\cite{side-effects-cancer-treatments, narrative-review-heterogeneity-challenges}.
+% side-effects-cancer-treatments: yale medicine fact sheet about side effects
+% narrative-review-heterogeneity-challenges: paper on ncbi about heterogeneity, highlighting (among other things) the unpredictability
+
+Typically,\topic{FORMATION} cancer arises in a complex, multistep process, starting with modifications to the genome.
+These modifications influence all processes inside the cell, for example gene and protein expression, as well as altering the activity of diverse intra-cellular processes.
+Often, it is not a single mutation which causes a cell to become cancerous, but the accumulation of different mutations over the course of generations of cells~\cite{stem_cell_mutations}.
+Certain substances or exposures, known as \textit{carcinogens}~\cite{carcinogens-def}, such as for example tobacco, different viruses or some types of radiations, can greatly increase the probability of a cell becoming cancerous~\cite{carcinogens}.
+%\color{gray}As \todo{too abstract}can easily be deduced from the Central Dogma Of Biology, genetic and epigenetic modifications to the DNA affect biological processes inside the cell.
+%Those changes can also be measured in a lab context, for instance at the transcriptome- and proteome-level.\color{black}
+The mutations causing cancer might occur during the lifespan of a cell (e.g., caused by mutagens reacting with the DNA, or by a mistake in DNA replication)~\cite{mutations} or be inherited from previous cells.
+Other aspects of an individual's lifestyle, such as exercise or diet habits, can also influence carcinogenesis~\cite{carcinogens,carcinogens-def}.
+The probability of developing cancer can be reduced by avoiding known risk factors and adapting one's lifestyle accordingly, but still, the formation of the disease is random-dependent and currently barely foreseeable, and can therefore never be completely ruled out.
+%\todo{FORMATION\centering\\$\Downarrow$\centering\\HETEROGENEITY\centering}
+
+%Often, cancer formation is triggered by mutations in the DNA of the affected cells.
+%These can either be inherited or happen during the cells lifespan\addref{during the cells lifespan}.
+%Certain substances or exposures, known as \textit{carcinogens}~\cite{carcinogens-def}, such as for example tobacco, different viruses or some types of radiations, can greatly increase the probability of a cell developing cancer~\cite{carcinogens}.
+%Other common carcinogens include obesity, alcohol consumption, poor diet or lack of physical activity\addref{lack of physical activity}.
+%In summary, the probability of developing cancer can be reduced by avoiding known risk factors, but still, the formation of the disease is random and can therefore never be completely ruled out.
+% One\topic{HETEROGENEITY} main challenge in cancer therapy is that cancer cells and their properties tend to differ strongly. 
+% The different mutations present in different tumors or cells cause a significant heterogeneity in cancer, as they modify different biological aspects and cellular processes, 
+Due\topic{HETEROGENEITY} to the random nature inherent to the mutations\todo{talk about more than just mutations, but alterations in general? The point I wanted to make was that mutations are inherently random, and therefore different mutations have different consequences, but it all starts with the inherent randomness of mutations} causing cancer, the specific mutations triggering carcinogenesis are never the exact same.
+This poses a significant challenge to any attempt at cancer therapy, namely that all cancer cells tend to differ strongly in their biological properties.
+This\todo{maybe this can become a repeat if I reformulate the first sentence} heterogeneity can have different effects on the biological aspects and different cellular processes, which can even lead to cellular dysfunction.
+Those differences can also be measured in a laboratory context and are therefore used to characterize and categorize the different cancer cells.\todo{I talk about cancer \textit{cells} instead of \textit{cell lines} here, which is not ideal, but I have not yet introduced cell lines}
+These differences can occur between different patients (\textit{inter-patient heterogeneity}), between different tumors of the same patient (\textit{inter-tumor heterogeneity}) or even between individual cells within the same tumor (\textit{intra-tumor heterogeneity})~\cite{heterogeneity-implications-targeted-therapeutics}.\\
+%\color{gray}The challenges these differences pose for cancer therapy are numerous, as the biological targets of certain drugs or therapies might not be present in a different scenario. Therefore, a tumor might be sensitive to a certain drug, but the same type of tumor might be resistant to that same drug in another patient. Also, different cells within one tumor might be differentially sensitive, which can easily negate the effectiveness of a drug.\\
+% NOTE: here's the paragraph about The Hallmarks Of Cancer which I removed
+%Despite\todo{does not really fit the narrative, maybe remove completely} the significant heterogeneity, there tend to be certain similarities between different tumors, as characterized and classified by Hanahan and Weinberg in \textit{The Hallmarks Of Cancer}~\cite{hallmarks-of-cancer} in 2000 and extended in 2011~\cite{hallmarks-of-cancer-next-generation}.
+%Even though these similarities might give some hints for potential points of attack, the prevailing aspect is still the heterogeneity and the challenges it poses.
+One\topic{HETEROGENEITY PROBLEMS FOR THERAPY + TYPES OF THERAPY} of the numerous challenges posed by the heterogeneity in tumors is that it makes the way a certain tumor or patient would react to a certain strategy for cancer treatment very unpredictable.
+One such strategy for cancer treatment might fall under one of three general categories, namely systemic therapy, radiation therapy and surgery.
+Among systemic therapy, there are many options, which include chemotherapy.
+This therapy typically involves the use of broadly cytotoxic drugs to kill cancer cells.
+The main problem with chemotherapy is that it also attacks healthy cells, and therefore typically has very heavy side effects.
+Another type of systemic therapy, which has gained in popularity lately, is a targeted drug therapy.\rewrite{I can leave out immunotherapy as long as I don't claim to have an exhaustive list of systemic therapies}
+Targeted therapies act on specific mechanisms of action of the cancer, trying to achieve a greater specificity and to have less toxic effects on the healthy cells.
+The efficacy and predictability of targeted therapies are factors that are strongly hindered by cancer heterogeneity.
+A therapy strategy or specific drug which has been clinically proven to be effective for one patient might not do anything for another patient with the same kind of tumor, as the biological target for the drug might not be present at all, or only be present in a modified form in different tumors.
+However, targeted therapies circumvent the heavy side effects of a typical chemotherapy.
+This makes the development of practicable targeted therapies very desirable, which is the reason why this has not been the main focus in clinical cancer therapy.
+These types of therapy exemplify the personalized, patient-specific approach which has become more widespread and popular than the conventional approaches to cancer therapy in recent years. It trades the extensive non-specific killing of any cells for a more targeted attack on cancer cells only.
+
+%Clinically, the frequency at which cancer cells evolve and change, as well as the intra-tumor heterogeneity pose a large challenge: They might induce a significant difference between, on the one hand, the cells on which the genetic profiling has been performed after they were obtained from a biopsy, and, on the other hand, the cells which are in the tumor at the time when the therapy is applied~\cite{heterogeneity-is-it-a-problem}\todo{interesting, but not really relevant/analyzable in my specific case}.
+%That difference makes the efficacy of a treatment unpredictable in many cases~\cite{narrative-review-heterogeneity-challenges}, even if that treatment might have been specifically selected due to the profiling of the specific tumor.
+
+%Currently,\topic{TYPES OF THERAPY} there are three general options of cancer treatment which are commonly used.
+%They include systemic therapy, radiation therapy and surgery.
+%Systemic therapy is the most used type of cancer therapy~\cite{msd_manual_systemic_therapy}.
+%One subtype of systemic therapy is chemotherapy.
+%It\remove{remove this sentence?} is used very commonly and typically involves the use of a broadly cytotoxic drug to kill the cancer cells.
+%It is primarily used because for many patients, more targeted or specific therapy options are not available.\remove{remove this? why?}
+%Chemotherapy carries the risk of serious side effects, since it cannot selectively attack cancer cells, but it also attacks healthy cells.\\
+
+%This new approach is based on insights about the patient stemming from deep molecular analysis, and has been one of the most important advances in modern oncology~\cite{personlized-medicine-recent-progress-cancer}.
+%\color{gray}In\todo{move this and work it INTO the previous paragraph $\Rightarrow$ this is the idea targeted therapies are based on} recent years, there has been a shift from an organ-centric approach to cancer treatment to a personalized, patient-specific approach, based on deep molecular analysis~\cite{personlized-medicine-recent-progress-cancer}. This has been one of the most important advances in modern oncology~\cite{personlized-medicine-recent-progress-cancer}.\color{black}
+
+%\color{gray}{Current \rewrite{currently rewriting this section}methods for treatment of cancer are very varied. One common therapy is using chemotherapy (toxic compounds to kill cancer cells) or radiation therapy (using x-ray, gamma rays or similar types of radiation to kill cancer cells). The problem is that these methods are very aggressive and risky, since they are unable to filter for cancer cells and also attack regular, healthy cells, making these kinds of therapy very taxing on the health of the patient. Chemotherapy is one of the most commonly used measure against cancer currently, but it has, for the most part, a drastic impact on the patients health and quality of life, as it can cause many side effects such as poor appetite due to nausea and vomiting, pain, fatigue, as well as psychological symptoms caused by aspects such as chemotherapy-induced hair loss~\cite{cancer-chemotherapy-and-beyond}. There are also more targeted methods of cancer therapy being developed and applied, which do limit the side effects of chemotherapy since they are not as broadly cytotoxic, but they are not yet available for all cancer types and come with the caveat that the efficacy of these therapies on different patients is going to be very unpredictable~\cite{cancer-chemotherapy-and-beyond}.
+%Personalized cancer therapy is one of the main goals of cancer research, since it would allow medical practitioners to administer drugs with a higher probability of success and a lower chance of unwanted side effects~\cite{meric2012overcoming}. The dream scenario would be the ability to produce tailor-made drugs for every patient, but that is still not available for all types and subtypes of cancer~\cite{personalized_cancer_medicine}.\\
+%very important point here, because this is what my thesis is all about. Expand and reference biological/molecular properties mentioned earlier
+%In recent years, there has been a shift from an organ-centric approach to cancer treatment to a personalized, patient-specific approach, based on deep molecular analysis~\cite{personlized-medicine-recent-progress-cancer}. This has been one of the most important advances in modern oncology~\cite{personlized-medicine-recent-progress-cancer}. Currently, molecular profiling is increasingly being used as a guiding principle for cancer therapy, but the current landscape of the scientific literature is vast and overwhelming. Tools like the \textit{Personalized Cancer Therapy} Knowledge Base~\cite{personalized-cancer-therapy} are being created for that purpose; but still, the necessary information for the specific situation of a patient might be difficult to find or even unavailable. Biomarker-guided medicinal product development has been included in the 6th and most recent revision of the \textit{Guideline on the clinical evaluation of anticancer medicinal products}~\cite{ema_guideline}, published by the European Medicines Agency in January 2024. Still, the processes of changing official regulations and recommendations can often take a very long time, which is why the previously mentioned \textit{Personalized Cancer Therapy} Knowledge Base aims to provide scientific support for the implementation of personalized cancer therapy beyond the official regulations and recommendations~\cite{personalized-cancer-therapy}.\color{black}
+
+Due\topic{CANCER CELL LINES} to the vast amount of available anti-cancer drugs and the significant heterogeneity in cancer, a model system with consistent properties is needed for research purposes.
+A commonly used in vitro model system in cancer research are cancer cell lines.
+These consist of highly reproducible~\cite{cancer_cell_lines_useful_model} cancer cells kept in a lab setting, with well-known properties~\cite{cancer_cell_line_definition,cancer_cell_lines_useful_model}.
+%Cancer cell lines are useful because they are well-characterized with omics technologies (i.e.\ genomics, transcriptomics, and proteomics)~\cite{cancer_cell_lines_useful_model}.
+%They are able to provide an indefinite source of biological material for experimental purposes~\cite{cancer_cell_lines_useful_model}, which allows for experiments to be reproducible.
+Additionally, they allow researchers to experimentally measure the response of the cell line to various drug and therapy options.
+They also allow to perform these experiments without any ethical dubiety.
+Finally, they facilitate and allow the collaboration between different researchers worldwide.
+%Also\remove{starting here, see if this brings anything new or can be removed entirely}, since the cell lines and any previously obtained properties or experimental results are being made publicly available and therefore shared between countless laboratories worldwide, analyses do not need to be repeated for every lab or research question.
+%This makes sharing of intermediate research results and collaboration between different researchers and labs much easier.
+%Due to the advances in high-throughput sequencing and the future tendency to select treatment strategies for every patient\todo{select treatments: move this to the following paragraph} based on similarities of that specific tumors molecular and cellular profile to a known cancer cell line, a large and wide encompassing library of cancer cell lines will only become more important in the future~\cite{cancer_cell_lines_useful_model}.\\
+%Another important aspect about cancer cell lines is that they allow researchers to experimentally determine drug response for certain drugs and cells, with no ethical dubiety, which would not be possible in a clinical context.
+
+As\topic{DRUG SENSITIVITY PREDICTION}\todo{select treatments specifically for a patient} actual tailor-made medicine for cancer treatment is still rather far away from being applicable every time in practice, we want to focus on less powerful\todo{is this "little negative" enough?}, but more achievable alternative methods.
+One of those would be to be able to predict the efficacy of different cancer drugs for a specific cancer patient.
+One strategy to achieve this goal, known as \textit{drug sensitivity prediction}, is to use cancer cell lines and the data readily available about them to find statistical associations between molecular properties of one specific cell line and drug sensitivity values for that cell line.
+Concretely, we want to use the results of these statistical analyses to predict a drug response value for a certain drug and cell line which has not been experimentally tested.
+
+%Drug\topic{PERSONALIZED THERAPY} sensitivity prediction for cancer drugs is currently a very present topic in clinical oncology.\todo{sell this more a vision than a present topic, since I just told that it is still not achievable}\\
+Drug\topic{PERSONALIZED THERAPY}sensitivity prediction for cancer drugs on a patient-by-patient basis remains a visionary goal in clinical oncology.
+It is the foundation for creating personalized cancer medicine based on the characterizations of one specific tumor, but also a tool which can help intermediately in the selection of the most appropriate drug from the pool of currently available cancer drugs.
+Different approaches\addref{cite a review which gives an overview over different algorithms. The challenge is especially not such a review, but rather just a challenge which compares algorithms/approaches} for drug sensitivity prediction have been implemented already, as summarized in the \emph{NCI-DREAM drug sensitivity prediction challenge}~\cite{nci_dream}.
+This project also aims to assess and classify the performance of the different algorithms, analyzing a total of 44 algorithms.
+The\remove{results not relevant for my topic} study found that the best algorithms modeled nonlinear relationships between cell lines and features and provided the option to incorporate additional information into the prediction model, primarily about biological pathways.
+%like random forest algorithms~\cite{predicting_drug_sensitivity_random_forests}, deep learning methods~\cite{predicting_drug_sensitivity_deep_learning} or combined machine learning approaches such as kernelized Bayesian multitask learning~\cite{predicting_drug_sensitivity_bayes}\addref{cite 1 review over the entire field instead of three individual examples for methods. DREAM Drug Sensitivity Prediction Challenge}
+
+Aside from the prediction of concrete drug sensitivity values for a certain drug and a specific patient, interesting insights can also be gained when looking for more broad statistical associations between biological features and drug sensitivtiy. That is done by way of performing a so-called enrichment analysis.
+One\topic{ENRICHMENT} way to potentially predict drug response for a certain patient, but more fundamentally also to gain insight into the links between biological processes and drug sensitivity, is to perform a so-called enrichment analysis.
+The underlying idea is to find statistical associations between biological properties present in cancer cell lines we are considering and different types of drug sensitivity data, which was generated experimentally using the cancer cell lines.
+That way, we want to find certain biological properties about the cell lines, that are statistically linked to an anomalously increased sensitivity or resistance towards a certain drug.\\
+In\topic{MY WORK} this thesis, we will perform such an enrichment, specifically a \textit{Gene Set Enrichment Analysis} using \textbf{GeneTrail}~\cite{genetrail}.
+When performing GSEA, which was originally introduced by Subramanian et al. in 
+We use the Genomics of Drug Sensitivity in Cancer (GDSC) database \cite{gdsc}, which is one of the largest publicly available cancer cell line datasets, to provide drug sensitivity data for cancer cell lines, and \todo{starting from here the formulation is weird}partition the cell lines into categories according to drug sensitivity alterations present in a certain  cell lines.
+Then, we try to identify certain gene expression alterations which are statistically linked to a remarkably increased or decreased drug sensitivity.\\
+
+%In\topic{MY WORK} this thesis, we will perform the first steps to a simplified version of this prediction\todo{we do not do drug sensitivity prediction, we rather want to use the (previously introduced) method of enrichment to identify biological processes which might be linked to an increased sensitivity or resistance to a drug}: we want to use available data, like in our case biological properties about the cancer cell lines (such as commonly characterized gene expression alterations) and drug sensitivity data (available through e.g. the \textsc{GDSC} database), and run a variety of statistical tests on that data, including the use of \textbf{GeneTrail}~\cite{genetrail} to perform \textit{Gene Set Enrichment Analysis}. That way, we can attempt to find statistical associations between properties of a specific cell line and a noteworthy sensitivity or resistance to a specific drug, and use those findings to give simple, but helpful aid in drug sensitivity prediction.%\rewrite{check}
+
+\textsc{To-Do: Results}\todo{can also be left as a to-do for now and added when writing the results chapter}\\
+\\
+\textsc{To-Do: Structure of the Thesis}

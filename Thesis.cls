@@ -1,7 +1,7 @@
 %%
 %% This is template is based on 'Thesis.cls' by Steve Gunn and Sunil Patel
 %%
-%% Adpated by Alex Schlosser
+%% Adpated by Alex Schlosser and later by Francesco Georg Schmitt
 
 \NeedsTeXFormat{LaTeX2e}[1996/12/01]
 \ProvidesClass{Thesis}
@@ -29,8 +29,10 @@
 \ifthenelse{\isempty{#1}}{\todo[color=blue!40]{Add reference.}}{\todo[color=blue!40]{#1}}}
 \newcommand{\rewrite}[1]{
 \ifthenelse{\isempty{#1}}{\todo[color=green!40]{Rewrite.}}{\todo[color=green!40]{#1}}}
+\newcommand{\remove}[1]{
+\ifthenelse{\isempty{#1}}{\todo[color=red!40]{Remove.}}{\todo[color=red!40]{#1}}}
 \newcommand{\topic}[1]{
-\todo[color=red!40]{#1}}
+\todo[color=black!60, textcolor=white!100, noline]{#1}}
 
 \newcommand{\setchapterpath}[1]{\def\chapterpath{#1}}
 \newcommand{\setappendixpath}[1]{\def\appendixpath{#1}}
