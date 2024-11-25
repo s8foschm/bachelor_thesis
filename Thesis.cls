@@ -33,6 +33,8 @@
 \ifthenelse{\isempty{#1}}{\todo[color=red!40]{Remove.}}{\todo[color=red!40]{#1}}}
 \newcommand{\topic}[1]{
 \todo[color=black!60, textcolor=white!100, noline]{#1}}
+\newcommand{\unimportant}[1]{
+\ifthenelse{\isempty{#1}}{\todo[color=gray!40]{Unimportant.}}{\todo[color=gray!40]{#1}}}
 
 \newcommand{\setchapterpath}[1]{\def\chapterpath{#1}}
 \newcommand{\setappendixpath}[1]{\def\appendixpath{#1}}
@@ -84,6 +86,7 @@
 \newpage
 \if@twocolumn\hbox{}\newpage\fi\fi\fi}
 \usepackage{amsmath,amsfonts,amssymb,amscd,amsthm,xspace}
+\usepackage{romannum}
 \usepackage[centerlast,small,sc]{caption}
 \setlength{\captionmargin}{20pt}
 \renewcommand{\topfraction}{0.85}
@@ -106,6 +109,9 @@
 \usepackage[usenames,dvipsnames]{xcolor}
 \usepackage[subfigure]{tocloft}
 \usepackage{cite}
+\usepackage{makecell}
+\usepackage{microtype}
+\usepackage{appendix}
 
 %% ------- Define Chapter Heading Format ------- %%
 
@@ -169,10 +175,12 @@
         keepspaces=true}}%
 \resetlst%
 
-\usepackage[pdfpagemode={UseOutlines},bookmarks=true,
-   bookmarksopenlevel=0,bookmarksnumbered=true,hypertexnames=false,
-   colorlinks,linkcolor={black},citecolor={black},urlcolor={black},
-   pdfstartview={FitV},unicode,breaklinks=true,bookmarksopen=true]{hyperref}
+%\usepackage[pdfpagemode={UseOutlines},bookmarks=true,
+%   bookmarksopenlevel=0,bookmarksnumbered=true,
+%   colorlinks,linkcolor={black},citecolor={black},urlcolor={black},
+%   pdfstartview={FitV},unicode,breaklinks=true,bookmarksopen=true]{hyperref}
+%hypertexnames=false,
+\usepackage[colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black]{hyperref}
 
 
 \pdfstringdefDisableCommands{
@@ -180,25 +188,41 @@
 }
 
 \newcommand*{\beginappendix}{
-  \def\@chapapp{Appendix}
-
+  %\def\@chapapp{Appendix}
+  \appendix
   \setcounter{chapter}{1}
 \renewcommand{\thechapter}{\Alph{chapter}}
 }
 
-\newcommand*{\loadchapter}[2]{
-  \chapter{#2}
-  \lhead{Chapter \thechapter. \emph{#2}} 
+%\newcommand*{\loadchapter}[2]{
+%  \chapter{#2}
+%  \lhead{Chapter \thechapter. \emph{#2}} 
+%  \label{chapter:#1}
+%  \input{\chapterpath #1}
+%}
+
+\newcommand{\loadchapter}[3]{
+  \chapter[#3]{#2}%
+  \lhead{Chapter \thechapter. \emph{#2}}
   \label{chapter:#1}
   \input{\chapterpath #1}
 }
 
-\newcommand*{\loadappendix}[2]{
-  \chapter{#2}
-  \lhead{Appendix \thechapter. \emph{#2}}
-  \label{appendix:#1}
-  \input{\appendixpath #1}
+%\newcommand{\loadappendix}[2]{%
+%    \renewcommand{\thechapter}{\Alph{chapter}} % Use alphabetic numbering
+%    \chapter{#1}%
+%    \label{app:#2}%
+%    \input{Appendices/#2}%
+%}
+
+\newcommand{\loadappendix}[2]{%
+    \renewcommand{\thechapter}{\Alph{chapter}} % Use alphabetic numbering
+    \chapter{#1}%
+    \label{app:#2}%
+    \input{Appendices/#2}%
+    \stepcounter{chapter} % Ensure chapter is incremented
 }
+
 
 
 
@@ -208,6 +232,7 @@
 \newcommand*{\thesistitle}[1]{\def\TITLE{#1}\title{#1}}
 \newcommand*{\supervisor}[1]{\def\supname{#1}}
 \newcommand*{\advisor}[1]{\def\advname{#1}}
+\newcommand*{\secondadvisor}[1]{\def\secondadvname{#1}}
 \newcommand*{\examiner}[1]{\def\examname{#1}}
 \newcommand*{\secondexaminer}[1]{\def\secondexamname{#1}}
 \newcommand*{\degree}[1]{\def\degreename{#1}}
@@ -243,7 +268,7 @@
     \let \footnote \thanks
     \setcounter{footnote}{0}
     \null\vfil
-    \vskip 60\p@
+    \vskip 50\p@
     \begin{center}
       \setlength{\parskip}{0pt}
       {\LARGE \bf \TITLE \par}
@@ -263,10 +288,10 @@
       \bigskip
       {\large Supervisor \\ \textbf{\supname} \\[0.6cm]}
       \smallskip
-      {\large Advisor \\ \textbf{\advname} \\[1.1cm]}
+      {\large Advisor \\ \textbf{\advname} \\ \textbf{\secondadvname} \\[0.6cm]}
       \smallskip
       \doifnotproposal{
-        {\large Reviewers \\ \textbf{\examname} \\ \textbf{\secondexamname} \\[0.75cm] }
+        {\large Reviewers \\ \textbf{\examname} \\ \textbf{\secondexamname} \\[0.6cm] }
       }
       \bigskip
       {\large \@date \\[0.8cm]}

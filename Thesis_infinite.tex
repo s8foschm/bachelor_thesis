@@ -5,10 +5,13 @@
 %% ---------------------------------------------------------------- 
 
 % Set up the document
-\documentclass[a4paper, 11pt, twoside]{Thesis}  % Use the "Thesis" style defined in Thesis.cls
+%\documentclass[a4paper, 11pt, twoside]{Thesis}  % Use the "Thesis" style defined in Thesis.cls
+\documentclass[border=1in]{standalone}
 \graphicspath{{./Figures/}}  % Location of the graphics files (set up for graphics to be in PDF format)
 \setchapterpath{./Chapters/}
 \setappendixpath{./Appendices/}
+
+% make it one infinitely long page
 
 % Include any extra LaTeX packages required
 \usepackage[square, numbers, comma, sort&compress]{natbib}  % Use the "Natbib" style for the references in the Bibliography
@@ -16,7 +19,6 @@
 \usepackage{verbatimbox}
 \usepackage[usenames]{xcolor}
 \usepackage{tabularx}
-\usepackage{diagbox}
 \usepackage{multirow}
 \usepackage{wrapfig}
 \usepackage{framed}
@@ -34,8 +36,6 @@
 \usepackage{longtable}
 \usepackage{multicol}
 \usepackage{xifthen}
-\usepackage{float}
-\usepackage[nodayofweek]{datetime}
 
 
 %% Specify thesis parameters here
@@ -46,17 +46,14 @@
 \group       {Center for Bioinformatics}{https://zbi-www.bioinf.uni-sb.de/en/index.html}
 \faculty     {Faculty of Mathematics and Computer Science}{https://www.uni-saarland.de/fakultaet/mi.html}
 \supervisor  {Prof. Dr. Hans-Peter Lenhof}
-\advisor     {Kerstin Lenhof, Dr. rer. nat.}
-\secondadvisor {Lea Eckhart, M. Sc.}
+\advisor     {Dr. Kerstin Lenhof, M. Sc. Lea Eckhart}
 \examiner    {Prof. Dr. Hans-Peter Lenhof}
-\secondexaminer {Prof. Dr. Volkhard Helms}
+\secondexaminer {tbd}
 \degree      {Bachelor Of Science}
 \thesiskind  {Bachelor's Thesis}
 \authors     {Francesco Georg Schmitt}
-%\thesistitle {Gene Set Enrichment Analysis on GDSC Datasets using GeneTrail}
-\thesistitle {Enrichment Analyses for the Identification of Drug Response Markers in Cancer Cell Lines}
-\newdate{date}{25}{11}{2024}
-\date        {\displaydate{date}}
+\thesistitle {Gene Set Enrichment Analysis on GDSC Datasets using GeneTrail}
+\date        {\today}
 %\subject     {}
 %\keywords    {}
 %% ----------------------------------------------------------------
@@ -71,7 +68,7 @@
 %\revision{\input{|"git rev-parse HEAD | cut -c 1-8"}}
 
 \begin{document}
-\sloppy
+\begin{minipage}{21cm}
 \frontmatter	  % Begin Roman style (i, ii, iii, iv...) page numbering
 
 %% Title Page
@@ -88,7 +85,7 @@
   \end{center}
   Ich erkl\"{a}re hiermit an Eides Statt,
   dass ich die vorliegende Arbeit selbstst\"{a}ndig verfasst und keine
-  anderen als die angegebenen Quellen und Hilfsmittel verwendet habe. Das KI-Tool ChatGPT von OpenAI wurde zu Recherchezwecken und als Formulierungshilfe verwendet. Der gesamte Inhalt wurde jedoch eigenst\"{a}ndig vom Autor verfasst.
+  anderen als die angegebenen Quellen und Hilfsmittel verwendet habe.
 
   \begin{center}
     \bf \large
@@ -96,7 +93,7 @@
   \end{center}
   I hereby confirm that I have written this thesis on my own and 
   that I have not used any other media or materials than the ones
-  referred to in this thesis. The AI tool ChatGPT by OpenAI was used for research purposes and to aid in the formulation of certain sections. However, all contents were independently written by the author.
+  referred to in this thesis.
 
   \vfill
   \begin{center}
@@ -117,8 +114,8 @@
 
   \vfill
   \vfill
-  
-  Ort, Datum/Place, Date:\hspace{1cm} Saarbrücken, 25.11.2024\\
+   
+  Datum/Date:\\
   \rule[1em]{25em}{0.5pt}  % This prints a line to write the date
 
   Unterschrift/Signature:\\
@@ -140,13 +137,7 @@
 %% ----------------------------------------------------------------
 \begin{acknowledgements}
 
-First of all, I would like to thank my supervisor Prof.\ Dr.\ Hans-Peter Lenhof for providing me the opportunity to write my Bachelor's thesis at his chair. I would also like to thank Prof.\ Dr.\ Volkhard Helms for reviewing my thesis.
-
-I owe my most sincere gratitude to my advisors, Lea Eckhart and Kerstin Lenhof. They were always open for questions and supported me immensely in the process of working on this thesis, and most importantly, always kept their patience, even when the whole process ended up taking much longer than it should have. They also always provided extensive and constructive feedback during the writing of this thesis.
-
-For proofreading, I would like to thank my dear friends Mara Klee, Tobias Wiedemann, Alex Umansky and, especially, my sister Angelina Schmitt.
-
-Finally, I want to thank my family for keeping the positive pressure on when my motivation was at a low, as well as their unwavering support throughout my studies, which I immensely appreciate.
+\textsc{To-Do.}
 
 \end{acknowledgements}
 \cleardoublepage
@@ -160,10 +151,10 @@ Finally, I want to thank my family for keeping the positive pressure on when my 
 
 %% The Dedication page
 %% ----------------------------------------------------------------
-%\doifnotproposal{
-%  \thispagestyle{empty}  % Page style needs to be empty for this page
-%  \dedicatory{Dedicated to WHATEVER.}
-%}
+\doifnotproposal{
+  \thispagestyle{empty}  % Page style needs to be empty for this page
+  \dedicatory{Dedicated to WHATEVER.}
+}
 
 \mainmatter	  % Begin normal, numeric (1,2,3...) page numbering
 
@@ -172,13 +163,13 @@ Finally, I want to thank my family for keeping the positive pressure on when my 
 % Include the chapters of the thesis, as separate files (careful of case-sensitivity and spaces in filenames)
 % Capitalized chaptertitles generally look better
 
-\loadchapter{Intro}{Introduction}{Introduction}
-\loadchapter{Bio}{Biology of Cancer \\ and Model Systems}{Biology of Cancer and Model Systems}
-\loadchapter{Math}{Mathematical Methods}{Mathematical Methods}
-\loadchapter{Mats}{Materials}{Materials}
-\loadchapter{Impl}{Study Design and Implementation}{Study Design and Implementation}
-\loadchapter{Results}{Results}{Results}
-\loadchapter{Discussion}{Discussion}{Discussion}
+\loadchapter{Intro}{Introduction}
+\loadchapter{Bio}{Biological Background}
+\loadchapter{Math}{Mathematical Methods}
+\loadchapter{Mats}{Materials}
+\loadchapter{Impl}{Implementation}
+\loadchapter{Results}{Results}
+\loadchapter{Discussion}{Discussion}
 
 
 \clearpage
@@ -218,18 +209,7 @@ Finally, I want to thank my family for keeping the positive pressure on when my 
 \bibliographystyle{unsrtnat}  % Use the "unsrtnat" BibTeX style for formatting the Bibliography
 \bibliography{Bibliography}  % The references (bibliography) information are stored in the file named "Bibliography.bib"
 
-\appendix%Begins the appendix
-\lhead{\emph{Appendix}}
-\renewcommand{\chaptername}{Appendix} % Ensure chapters are labeled "Appendix"
-\renewcommand{\thechapter}{\Alph{chapter}} % Use letters (A, B, ...) for chapter numbering
-%\setcounter{chapter}{1}
-%\loadappendix{Across-drug Analysis of Enrichment and Depletion Count}{bidirectional-bar-plots}
-\stepcounter{chapter}
-\chapter{Across-drug Analysis of Enrichment and Depletion Count}\label{appendix:bidir}
-\input{Appendices/bidirectional-bar-plots}
-%\loadappendix{Principal Component Analysis}{pca-plots}
-\stepcounter{chapter}
-%\setcounter{section}{0} % Reset section numbering for the new appendix
-\chapter{Principal Component Analysis}\label{appendix:pca}
-\input{Appendices/pca-plots}
+\beginappendix %Begins the appendix
+\loadappendix{Appendix}{Appendix}
+\end{minipage}
 \end{document}  % The End

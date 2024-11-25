@@ -1,10 +1,32 @@
 %!TEX root = ../Thesis.tex
 
-\section{GDSC database}
-\textsc{To-Do.}
+In this chapter, we will present the databases used in our analyses, including the GDSC and the KEGG database.
 
-\section{KEGG-Pathways}
-\textsc{To-Do.}
+\section{GDSC Database}\label{sec:gdsc}
 
-\section{Cancer Cell Lines}
-\textsc{To-Do.}
+The \textbf{Genomics of Drug Sensitivity in Cancer} (GDSC)~\cite{gdsc} database was initially introduced in 2010, funded in a collaboration between The Human Genome Project at the Wellcome Sanger Institute in the UK, and the Center for Molecular Therapeutics at the Massachusets General Hospital Cancer Center in the USA.\@
+%Its creation was founded by Wellcome.
+It aims to discover therapeutic biomarkers that influence anti-cancer drug response. To this end, the GDSC provides molecular characterization of around $1000$ human cancer cell lines, as well as drug screening result sof these cell lines for several hundred compounds.\\
+The cell lines have been selected meticulously to represent ``the spectrum of common and rare types of adult and childhood cancers of epithelial, mesenchymal and haematopoietic origin''~\cite{gdsc_paper}.\\
+The drug-response data contained in the GDSC database is separated into two datasets, namely GDSC1 and GDSC2. GDSC1 was originally introduced in 2012, while GDSC2 came out as its successor in 2015. The two datasets reflect distinct experimental setups employed to gather the respective data. Specifically, the GDSC1 employs fluorescent dyes (Syto 60, resazurin) to detect viable cells, whereas the GDSC2 employs the CellTiter-glo viability assay\cite{celltiterglo}, which relies on the presence of ATP as indicator for live cells. Additionally, drugs where stored in a more protective environment for the GDSC2 screening using so-called Storage Pods, providing a ``moisture-free, low oxygen environment, and protection from UV damage''~\cite{gdsc}.
+%The\todo{this is too specific detail} procedures and equipment used for the drug sensitivity screening were improved when transitioning to the GDSC2 database in 2015. Specifically, the drug compounds were stored in a more protected environment: whereas they were stored aliquots at -80°C in GDSC1 and subjected to no more than 5 freeze-thaw cycles, they are stored in Storage Pods for GDSC2, providing a ``moisture-free, low oxygen environment, and protection from UV damage''~\cite{gdsc} Additionally, the cells are seeded into 1536-well plates, as opposed to the 96-well or 384-well plates used in GDSC1.\\
+%Both datasets were generated experimentally.\\
+%GDSC1 was generated at the Wellcome Sanger Institute and the Massachusets General Hospital between 2009 and 2015. Then, the GDSC2 screening was introduced, and the experimental generation of the data was fully moved to the Wellcome Sanger Institute.\\
+As the methods used in GDSC2 provide more reliable results than the ones used in GDSC1, some experiments were repeated. If an experiment can be found in both datasets, it is recommended to use the data from GDSC2.\\
+The GDSC currently\footnote{as of September 12th, 2024} provides a total number of 576,758 dose-response curves. Those curves were fitted to the experimental measurements using a multi-level fixed effect model by Vis et al.~\cite{fixed_effect_model}.\\
+%This model provides great curve fitting, assuming the viability of the cells to follow a sigmoidal curve, the typical dose-response curve shape.\\
+In addition to dose-response curves, the GDSC cell lines have also been genetically characterized through a multitude of omics-measurements, including gene expression, copy number alterations, DNA methylation and others. For our analyses, we only employed the gene expression values.\\
+%The drug sensitivity data for the GDSC database is generated on a collection of over $1000$ cell lines, in a collaboration between the Wellcome Trust Sanger Institute, as well as the Center for Molecular Therapeutics at Massachusets General Hospital.
+The sensitivity of a cell line to a specific drug is measured using a fluorescence-based cell viability assay, after the cell line being exposed to the drug for a period of 72 hours.
+%The gene expression datasets for the GDSC include an extensive genomic characterization of each of the different cancer cell lines.
+
+\section{Biological Pathways}\label{sec:pws}
+
+In Chapter 6, we aim to identify pathways that are significantly associated with a sensitive/resistant drug response. For this analysis, we employ pathways provided by the \textbf{Kyoto Encyclopedia of Genes and Genomes} (KEGG) database~\cite{kegg_original_paper}. It is a ``collection of manually drawn pathway maps''~\cite{kegg_website}, collecting the knowledge of medical experts. It was presented in 2000 and is freely available online, and still being maintained and regularly updated.\\
+%The creation of this database was initiated in 1995.
+Aside from the pathway database, KEGG provides two other databases: the GENES database stores annotated genomic information, and the LIGAND database provides information about ``chemical compounds, enzyme molecules and enzymatic reactions''~\cite{kegg_original_paper}.\\
+The PATHWAY database contains information about many different pathways and networks of genomic interaction, for instance concerning metabolism, genetic information processing or cellular processes. The individual pathways are stored as graphical diagrams and contain the genes in a particular pathway. The diagrams which are provided for each pathway, also describe the precise interactions of each gene with one another. However, for our analysis, we only considered the pathways as sets of genes, without taking into consideration the precise interactions they have with each other.\\
+%For metabolic pathways specifically, it is relatively simple to manually draw one generalized reference pathway and then modify them into organism-specific ones, since metabolism is a very well conserved process among most organisms~\cite{kegg_original_paper}.\\
+For instance, \textit{metabolic pathways} contain, among others, the genes coding for enzymes which play a role in metabolic processes.Other functional categories for which pathways are provided by the KEGG PATHWAY database include \textit{genetic and environmental information processing}, which include gene expression, protein folding and DNA replication and repair mechanisms, as well as \textit{signal transduction}. The category of \textit{cellular processes} contains pathways regulating the cell cycle, cell mobility, and degradation processes like autophagy and apoptosis.\\
+The KEGG database contains a total of 73,669 entries, 6,709 of which are pathways\footnote{as of November 20th, 2024}.
+

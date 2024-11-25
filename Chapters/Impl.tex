@@ -1,5 +1,124 @@
 %!TEX root = ../Thesis.tex
 
-\textsc{To-Do.}\\
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+%\textsc{This chapter should function as a "Tutorial" on how somebody could reproduce our enrichments.}\\
+After understanding how enrichment analyses are performed in general, as well as where we can get our data from, we now go into what enrichment analyses we have performed specifically, and what data we used for them.
 
+\section{Approach}\label{sec:approach}
+%\subsection{GSEA and its applications}
+As explained previously in Chapter \ref{chapter:Math}, Gene Set Enrichment Analysis (GSEA) is a widely used computational method, which determines whether a predefined category is significantly enriched at the beginning or end of a sorted list of entities.
+%whether a predefined set of genes shows a statistically significant difference in a measure, such as gene expression or drug sensitivity, between two different datasets (i.e.\ healthy vs.\ diseased or similar).
+After its original proposal by Subramanian et al.~\cite{gsea_original}, many different implementations of GSEA have been published, focusing on slightly different methods of statistical post-processing etc.\\
+The potential applications for GSEA are seemingly only limited by the diversity of the data used as input, since the procedure in its purest, mathematical form, is highly data-agnostic and flexible. Typical applications of GSEA might use data on a per-gene or a per-cell line basis. If the data regards genes, the categories most commonly depict gene sets which represent biological pathways. If the data regards cell lines, there are many options: they might be categorized according to their gene expression profiles, or other properties about the cancer, like mutations, cancer site or histology.\\
+We performed three enrichment analyses in this thesis, which will be discussed in detail below.\\
+%Depending\remove{see if this in only repeating what I will write about the concrete enrichments later} on the input data and the categories, different biological insights can be gained by performing GSEA:\@ for example, if gene expression values are used for the sorted list of values and pathways are used for the categories, we can gain a good grasp of how much pathways are expressed in the different datasets respectively. If however, drug sensitivity values of multiple cancer cell lines against one specific drug are used as the sorted list of values, and biological properties of those cell lines are used as categories, one might be able to find a statistically significant link between a biological property of a cell line and an increased sensitivity or resistance of the considered cell line against one drug. In summary, the biological insights gained with the help of GSEA can be highly diverse due to the diversity of the data that can be used as inputs for GSEA.\\
+
+\section{Study Design}\label{sec:study_design}
+We performed three separate enrichment analyses, which only differ in the sorted list and categories used.
+\subsection{Gene-based Drug Sensitivity Enrichment}\label{subsec:sd_enrichment_1}
+The first enrichment analysis we performed was a drug sensitivity enrichment analysis. Our goal with this analysis is to identify deregulated genes which are associated to an increased sensitivity or resistance to a specific drug.\\
+As for all enrichment analyses, we need a list of sorted values and categories to be able to perform this analysis. In this case, the sorted values are IC50, expressing the sensitivity of a specific cell line to a specific drug. They are sorted increasingly, where a low IC50 value represents a large sensitivity to a drug. The values were downloaded from the GDSC database. For every drug, the number of cell lines for which we have drug sensitivity measurements are different.\\
+The categories contain cell lines for which a specific gene was found to be over-/underexpressed in respect to the other cell lines. These categories were generated previously based on gene expression values of genes in cancer cell lines, also provided by the GDSC database. A gene was considered up-regulated in a cell line if its gene expression was larger than the $95$th percentile of a standard normal distribution. Analogously, a gene was considered down-regulated in a cell line if its expression was smaller than the $5$th percentile.\\
+Later, the same enrichment was performed again, only this time using CMax-Viability values instead of IC50 for the drug sensitivity. Everything else about the enrichment was kept the same.
+%As mentioned earlier, the CMax-Viability measures drug response in a similar fashion to the IC50, with the main difference being that it is comparable between different drugs.\\
+
+\subsection{Pathway-based Gene Expression Enrichment}\label{subsec:sd_enrichment_2}
+In addition to the identification of deregulated genes that impact drug response in cancer cell lines, we also wanted to identify deregulated pathways in cancer cell lines and their impact on drug response. To identify which pathways are deregulated in a specific cancer cell line, we performed an enrichment analysis without any connection to drug sensitivity data.\\
+More specifically, we took gene expression data from the GDSC database, which we normalized using absolute z-scores. Thus, the end of the list corresponds to to genes with relatively high positive or negative z-scores, i.e.\ genes that might be over-/underexpressed (in other words, deregulated) in that specific cell line. Conversely, the beginning of this list corresponds to little deregulated genes.\\
+We used KEGG pathways as categories for this enrichment. Consequently, this result identified pathways which were deregulated in cancer cells.\\
+We used absolute z-scores for this analysis because the regulation direction of genes cannot be generally mapped to the regulation direction of pathways. Since we consider the pathways only as sets of genes, without any details to their interaction or function, one gene being up-regulated leading to the up-regulation of a pathway it is part of is just as possible as it leading to the down-regulation of the pathway. Therefore, by considering absolute z-scores, we avoided this issue by only considering deregulation in general, and therefore allowing to conclude from gene deregulation to pathway deregulation.
+%In a second step, a seperate GSEA was performed, without any connection to drug sensitivity values. Here, a gene expression matrix from the GDSC itself was used to generate the sorted list of values: a simple parser was written in Python to read the matrix and generate one sorted list of expression values of individual genes for every cell line. These values could then be used for another enrichment analysis, using the pathways provided by the KEGG Pathway database as categories.\\
+%The values were also normalized, using z-scores as well as absolute z-scores.\\
+%As a proof of concept, a PCA was performed on the results of this enrichment. To understand how the PCA was performed exactly, we first need to remind ourselves how exactly the data we had at that point looked like: we performed an enrichment analysis, giving us a p-value for every combination of a pathway and a cell line. This matrix is very high-dimensional in both axes, which makes it very appropriate to perform a dimensionality reduction technique like PCA\@. Here, PCA was used to reduce the dimensionality of the pathways. The dimensionality was reduced to $2$, to be able to make a two-dimensional scatter plot. The individual points in the scatter plot, representing a cancer cell line each, were then colored according to the respective histology and site of the cancer in that specific cell line. 
+
+\subsection{Pathway-based Drug Sensitivity Enrichment}\label{subsec_sd_enrichment_3}
+Based on the results of the pathway gene expression enrichment analysis, we were able to generate new categories to perform a similar analysis as in the gene-based drug sensitivity enrichment. Instead of up- or down-regulated individual genes, we now consider the deregulation of pathways as our categories.\\
+For this final enrichment analysis, we used the same sorted list of drug sensitivity by cell line as in the gene-based drug sensitivity enrichment in~\ref{subsec:sd_enrichment_1}.\\
+%Based on the results of the previous pathway gene expression enrichment, we were able to consider up- or down-regulated pathways instead of up- or down-regulation of individual genes in certain cell lines as categories. with the analysis of the gene expression of pathways, we were able to determine which pathways were deregulated in which cell lines.\\
+More technically speaking, the results provided by GeneTrail had the format of a file containing, in each line, the Cosmic ID of one cell line, the name of a pathway, a p-value and a regulation direction. According to the entries in these columns, a Python parser was implemented to read each of the results files from the previous enrichment (which was performed based on expression values without normalization, with z-score normalization and with absolute z-scores normalization), collect significant results ($\text{p-value}\leq0.05$), and write them accordingly into one category file, according to the following format: every line begins with the name of the considered pathway, followed by a blank value (which originally contained the name of the file from which the data was taken, but since this has no effect on the enrichment analysis itself, it was set to an arbitrary value), which is then followed by all the Cosmic IDs of the cell lines in which this pathway is up- or down-regulated (according to which file is currently being written, since there is one file for up-generated pathways and a separate file for down-regulated pathways). The values in every line are tab-separated, which makes up the category file format required by GeneTrail.
+
+\section{Technical Details}\label{sec:technical_details}
+
+\subsection{GeneTrail}\label{subsec:td_genetrail}
+%{\color{red}\textsc{What is \textbf{GeneTrail}, how does it work, how did we used it (web, local)?}}\\
+For the purpose of this thesis, \textbf{GeneTrail}~\cite{genetrail,genetrail_original} was used as a tool to perform the Gene Set Enrichment Analyses.\\
+\textbf{GeneTrail} was originally introduced by Backes, Keller, Lenhof et al.\ in 2007~\cite{genetrail_original}. It aims to provide a tool for performing various gene set analyses, which is both ``comprehensive and efficient''~\cite{genetrail_original} as well as easy to use. It is accessible through a website for free~\cite{genetrail}, and the code is accessible under a \textit{LGPL v3} license on GitHub~\cite{genetrail_github}.\\
+For our concrete analyses, we used a local installation of GeneTrail, instead of using the simply accessible web interface, since this allowed us to use bash scripting for automating the application of the GSEA workflow to many different input files. Also, having the raw GeneTrail results files on a local machine allowed for a highly flexible analysis and visualization of the results.
+
+\subsection{Execution}\label{subsec:td_execution}
+To run the analyses, a local installation of \textbf{GeneTrail 2} was used. Contrary to using the web server, interacting with the codebase directly via a local installation allows for more freedom with the exact post-processing, as well as simple automation of running GSEA on many input files.\\
+The concrete function we used can be found under \texttt{genetrail2/build/applications/gsea}.\\
+We used a simple bash script \lstinline|do_enrichment.sh| to give that program the appropriate arguments:
+\begin{table}[h]
+    \begin{tabular}{|c|c|c|}
+        \hline
+        Argument&Value&Explanation\\
+        \hline
+        \lstinline|--significance|&$0.05$&significance threshold (p-value)\\
+        \lstinline|--category_name|&category name&\\
+        \lstinline|--category|&category file&\\
+        \lstinline|--scores|&score file&\\
+        \lstinline|--adjustment|&adjustment method&e.g. Benjamini-Hochberg\\
+        \lstinline|--minimum|&$2$&\\
+        \lstinline|--maximum|&$700$&\\
+        \lstinline|--out|&output file&output file name\\
+        \lstinline|--increasing|&N/A&\\
+        \hline
+    \end{tabular}
+\end{table}\\
+That way, the arguments which stay the same (significance, minimum and maximum) could be comfortably provided to GeneTrail, and we can simply call our script with the respective arguments to do an enrichment:
+\begin{lstlisting}[language=bash, breaklines=true]
+bash do_enrichment.sh "${category_file}" "${score_file}" "${output_file_name}" "${adjustment_method}" "${category_name}"
+\end{lstlisting}
+where the respective variables are set according to the paths of the script, the input files and the desired file paths for the output files.\\
+For the automation, a bash script was used to loop over all files in a certain directory, namely the score files, and running the \lstinline|gsea| algorithm for combination of sorted list and category file desired.\\
+For the post-processing, several Python scripts were used: the result of GeneTrail is initially only one file for each input file (sorted list of identifier-value pairs) and category, containing an enrichment score, a p-value, a regulation direction, as well as some other more technical information for every single identifier in the original list. To make these results more readable and interpretable, one can proceed in several different ways: one way is to assemble all p-values into a matrix of Identifier $\times$ Category.
+
+\subsection{File Formats}\label{subsec:td_fileformats}
+The file formats are going to be shown exemplarily for the drug sensitivity enrichments, but the files for the gene expression enrichment are analogous.\\
+All files provided to GeneTrail and generated by GeneTrail and our post-processing had a simple \lstinline|.txt| file, with tab-separated values. To make it more readable, we will show them in table form here.
+For the drug sensitivity files used in the first enrichment analysis, the IC50 values were provided in tab-separated files. One file was provided per drug, with each line of that file containing a Cosmic Identifier of a cell line (a 6--7 digit number), and then an IC50 value as a floating point number (which can be negative). The cell lines are sorted by increasing drug sensitivity value.
+\begin{table}[H]
+    \begin{tabular}{|cc|}
+        \hline
+        910935&-1.892279\\
+        1331040&-1.639899\\
+        909715&-1.592577\\
+        ...&\\
+        \hline
+    \end{tabular}
+\end{table}
+The CMax-Viability files were originally provided in two matrices (one each for the GDSC1 and GDSC2 datasets) of cell lines $\times$ drugs, which were rewritten into score files, as described previously, using a simple Python script.\\
+The categories were provided to GeneTrail in form of a tab-separated file, where the first cell in every line contains the name of the category, followed by tab-seperated Cosmic Identifiers for each cell line contained in the category. Note that the lines are allowed to contain different numbers of cell lines in total.\\
+\begin{table}[H]
+    \begin{tabular}{|c|ccccc|}
+        \hline
+        CategoryA&1234&11243&14276&&\\
+        CategoryB&779&94394&12742&1288&\\
+        CategoryC&1473&184212&12428&12842&1382\\
+        \hline
+    \end{tabular}
+\end{table}
+The results file provided by GeneTrail after the enrichment analysis, which we used for all of our post-processing, is also tab-seperated.\\
+Up to two results files were provided for each gene, since we were considering one category containing cell lines where the gene was up-regulated, and one containing cell lines where it was down-regulated.\\
+\begin{table}[H]
+    \begin{tabular}{|c|c|c|c|c|c|c|c|}
+        \hline
+        Name&Reference&Hits&Score&Expected Score&P-value&Info&Regulation direction\\
+        \hline
+        GeneA&file.txt&$42$&$1337$&$0$&$0.04$&info&$1$\\
+        GeneB&file.txt&$42$&$-1337$&$0$&$0.03$&info&$0$\\
+        \hline
+    \end{tabular}
+\end{table}
+For us, the columns of interest are the \lstinline|Name|, \lstinline|P-value| and \lstinline|Regulation_direction| columns. By counting the significant p-values (which are $\leq 0.05$) over all results files, we can generate a summary file:
+\begin{table}[H]
+    \begin{tabular}{|c|cc|cc|}
+        \hline
+        gene&\makecell{count\\significantly\\enriched}&\makecell{count\\significantly\\depleted}&\makecell{median\\p-value\\enriched}&\makecell{median\\p-value\\depleted}\\
+        \hline
+        GeneA&12&3&0.035&0.002\\
+        GeneB&0&27&NA&0.04\\
+        GeneC&22&24&0.048&0.045\\
+        \hline
+    \end{tabular}
+\end{table}
